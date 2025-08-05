@@ -1,4 +1,4 @@
-# OurBulks
+# FitTogether
 
 ## サイト概要
 ### サイトテーマ
