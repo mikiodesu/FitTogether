@@ -1,0 +1,10 @@
+<%= render 'layouts/header' %>
+
+<% @workouts.each do |workout| %>
+  <div>
+    <%= image_tag workout.user.get_profile_image(100, 100) %>
+    <p><%= workout.user.name %></p>
+    <p><%= link_to "日付：#{workout.date}", workout_path(workout) %></p>
+    <p>一言メモ：<%= workout.memo %></p>
+  </div>
+<% end %>

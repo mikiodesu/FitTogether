@@ -1,0 +1,11 @@
+<%= render 'layouts/header' %>
+
+<%= image_tag @workout.user.get_profile_image(100, 100) %>
+<p>ニックネーム：<%= @workout.user.name %></p>
+<p>日付：<%= @workout.date %></p>
+<p>一言メモ：<%= @workout.memo %></p>
+
+<% if @workout.user == current_user %>
+  <%= link_to  "編集", edit_workout_path(@workout) %>
+  <%= link_to "削除", workout_path(@workout), method: :delete %>
+<% end %>

@@ -1,0 +1,14 @@
+<%= render 'layouts/header' %>
+
+<!-- ユーザーの詳細 -->
+<div>
+  <h3><%= @user.name %></h3>
+  <%= image_tag @user.get_profile_image(100,100) %>
+  <p><%= @user.introduction %></p>
+
+  <% if @user == current_user  %>
+   <p><%= link_to "プロフィール編集", edit_user_path(current_user) %></p>
+  <% end %>
+</div>
+
+<!-- ユーザーの投稿一覧 -->

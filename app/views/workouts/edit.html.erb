@@ -1,0 +1,17 @@
+<%= render 'layouts/header' %>
+
+<h2>編集</h2>
+<%= form_with model: @workout, local: true do |f| %>
+
+  <h4>日付</h4>
+  <%= f.label :date, "トレーニング日" %>
+  <%= f.date_select :date %>
+
+  <h4>一言メモ</h4>
+  <%= f.text_area :memo, id: "inputMemo", placeholder: "一言メモ", rows: 5 %>
+
+  <h4>公開非公開設定</h4>
+  <%= f.select :is_public, [["公開", true], ["非公開", false]] %>
+
+  <%= f.submit "変更を保存" %>
+<% end %>
