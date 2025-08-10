@@ -1,14 +1,16 @@
 ja:
   activerecord:
-    errors:
-      models:
-        user:
-          attributes:
-            name:
-              blank: "名前は必ず入力してください"
-            email:
-              blank: "メールアドレスを入力してください"
-              invalid: "正しいメールアドレスを入力してください"
-  devise:
-    failure:
-      invalid: 'メールアドレスかパスワードが違います'
+    attributes:
+      workout_detail:
+        bodypart:
+          chest: "胸"
+          back: "背中"
+          shoulders: "肩"
+          legs: "脚"
+          arms: "腕"
+          abs: "腹筋"
+  date:
+    order:
+      - :year
+      - :month
+      - :day

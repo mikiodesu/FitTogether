@@ -14,7 +14,8 @@
 <% @workout.workout_details.each do |detail| %>
   <div>
     <p>種目：<%= detail.exercise_name %></p>
-    <p>部位：<%= detail.body_part %></p>
+    <p>部位：<%= t("activerecord.attributes.workout_detail.bodypart.#{detail.bodypart}") %></p>
+    
     <p>重量：<%= detail.weight %> kg</p>
     <p>回数：<%= detail.reps %> 回</p>
     <p>セット数：<%= detail.sets %> セット</p>

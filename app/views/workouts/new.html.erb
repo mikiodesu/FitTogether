@@ -4,7 +4,7 @@
 <%= form_with model: @workout do |f| %>
   <h4>日付</h4>
   <%= f.label :date, "トレーニング日" %>
-  <%= f.date_select :date %>
+  <%= f.date_field :date %>
   <h4>一言メモ</h4>
   <%= f.text_area :memo %>
   <h4>公開非公開設定</h4>
@@ -15,6 +15,9 @@
     <div>
       <%= detail_form.label :exercise_name, "種目" %>
       <%= detail_form.text_field :exercise_name %>
+
+      <%= detail_form.label :bodypart, "部位" %>
+      <%= detail_form.select :bodypart, WorkoutDetail.bodyparts.keys.map { |k| [I18n.t("activerecord.attributes.workout_detail.bodypart.#{k}"), k] } %>
 
       <%= detail_form.label :weight, "重量(kg)" %>
       <%= detail_form.number_field :weight %>

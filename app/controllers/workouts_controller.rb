@@ -1,7 +1,7 @@
 class WorkoutsController < ApplicationController
   def new
     @workout = Workout.new(date: Date.today)
-    3.times { @workout.workout_details.build }
+    @workout.workout_details.build # 最初は1つだけ,空フォームを用意追加ボタンでJavaScriptがfields_forのhtmlを複製して挿入
   end
 
   def create
@@ -39,7 +39,7 @@ class WorkoutsController < ApplicationController
   def workout_params
     params.require(:workout).permit(
       :date, :memo, :is_public,
-      workout_details_attributes: [:exercise_name, :weight, :reps, :sets, :_destroy]
+      workout_details_attributes: [:id, :exercise_name, :bodypart,:weight, :reps, :sets, :_destroy]
     )
   end
 

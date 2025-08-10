@@ -4,7 +4,7 @@
   <div>
     <%= image_tag workout.user.get_profile_image(100, 100) %>
     <p><%= link_to workout.user.name, user_path(workout.user) %></p>
-    <p><%= link_to "日付：#{workout.date}", workout_path(workout) %></p>
+    <p><%= link_to "日付：#{workout.date.strftime('%-m/%-d')}", workout_path(workout) %></p>
     <p>一言メモ：<%= workout.memo %></p>
   </div>
 <% end %>
