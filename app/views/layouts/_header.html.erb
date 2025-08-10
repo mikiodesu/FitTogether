@@ -1,28 +1,21 @@
 
-<% if user_signed_in? %>
-    <li>
-      <%= link_to '新規投稿', new_workout_path %>
-    </li>
-    <li>
-      <%= link_to '一覧', workouts_path %>
-    </li>
-    <li>
-      <%= link_to 'マイページ', user_path(current_user.id) %>
-    </li>
-    <li>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    </li>
-<% else %>
-    <li>
-      <%= link_to "ロゴ", root_path %>
-    </li>
-    <li>
-      <%= link_to "about", about_path %>
-    </li>
-    <li>
-      <%= link_to "新規登録", new_user_registration_path %>
-    </li>
-    <li>
-      <%= link_to "ログイン", new_user_session_path %>
-    </li>
-<% end %>
+<nav>
+  <ul class="nav-list">
+    <% if user_signed_in? %>
+      <li><%= link_to '新規投稿', new_workout_path %></li>
+      <li><%= link_to '一覧', workouts_path %></li>
+      <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
+      <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+    <% else %>
+      <li>
+        <%= link_to root_path do %>
+          <%= image_tag "logo.png", alt: "FitTogetherロゴ", width: 60, height: 60  %>
+          <span class="logo-text">FitTogether</span>
+        <% end %>
+      </li>
+      <li><%= link_to "about", about_path %></li>
+      <li><%= link_to "新規登録", new_user_registration_path %></li>
+      <li><%= link_to "ログイン", new_user_session_path %></li>
+    <% end %>
+  </ul>
+</nav>

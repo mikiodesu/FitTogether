@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "名前は必ず入力してください"
+            email:
+              blank: "メールアドレスを入力してください"
+              invalid: "正しいメールアドレスを入力してください"
+  devise:
+    failure:
+      invalid: 'メールアドレスかパスワードが違います'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_08_08_114852) do
+ActiveRecord::Schema.define(version: 2025_08_09_053718) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -54,6 +54,18 @@ ActiveRecord::Schema.define(version: 2025_08_08_114852) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "workout_details", force: :cascade do |t|
+    t.integer "workout_id", null: false
+    t.string "body_part"
+    t.string "exercise_name"
+    t.integer "weight"
+    t.integer "reps"
+    t.integer "sets"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["workout_id"], name: "index_workout_details_on_workout_id"
+  end
+
   create_table "workouts", force: :cascade do |t|
     t.date "date"
     t.text "memo"
@@ -66,4 +78,5 @@ ActiveRecord::Schema.define(version: 2025_08_08_114852) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "workout_details", "workouts"
 end

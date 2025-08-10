@@ -1,6 +1,7 @@
 class WorkoutsController < ApplicationController
   def new
     @workout = Workout.new(date: Date.today)
+    3.times { @workout.workout_details.build }
   end
 
   def create
@@ -10,7 +11,7 @@ class WorkoutsController < ApplicationController
   end
 
   def index
-    @workouts = Workout.all
+    @workouts = Workout.where(is_public: true).order(created_at: :desc)
   end
 
   def show
@@ -36,7 +37,10 @@ class WorkoutsController < ApplicationController
   private
   
   def workout_params
-    params.require(:workout).permit(:date, :memo, :is_public)
+    params.require(:workout).permit(
+      :date, :memo, :is_public,
+      workout_details_attributes: [:exercise_name, :weight, :reps, :sets, :_destroy]
+    )
   end
 
 

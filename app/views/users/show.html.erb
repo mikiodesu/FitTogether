@@ -8,7 +8,17 @@
 
   <% if @user == current_user  %>
    <p><%= link_to "プロフィール編集", edit_user_path(current_user) %></p>
+   <p><%= link_to "アカウント設定", mypage_users_path %></p>
   <% end %>
 </div>
 
 <!-- ユーザーの投稿一覧 -->
+<div>
+  <h4>投稿履歴</h4>
+  <% @workouts.each do |workout| %>
+    <div>
+      <p><%= workout.date.strftime("%Y/%m/%d") %> — <%= workout.memo %></p>
+      <p>公開設定: <%= workout.is_public ? "公開" : "非公開" %></p>
+    </div>
+  <% end %>
+</div>

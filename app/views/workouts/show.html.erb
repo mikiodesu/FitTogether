@@ -1,11 +1,23 @@
 <%= render 'layouts/header' %>
 
 <%= image_tag @workout.user.get_profile_image(100, 100) %>
-<p>ニックネーム：<%= @workout.user.name %></p>
+<p>ニックネーム：<%= link_to @workout.user.name, user_path(@workout.user) %></p>
 <p>日付：<%= @workout.date %></p>
 <p>一言メモ：<%= @workout.memo %></p>
 
 <% if @workout.user == current_user %>
   <%= link_to  "編集", edit_workout_path(@workout) %>
   <%= link_to "削除", workout_path(@workout), method: :delete %>
+<% end %>
+
+<h3>トレーニング詳細</h3>
+<% @workout.workout_details.each do |detail| %>
+  <div>
+    <p>種目：<%= detail.exercise_name %></p>
+    <p>部位：<%= detail.body_part %></p>
+    <p>重量：<%= detail.weight %> kg</p>
+    <p>回数：<%= detail.reps %> 回</p>
+    <p>セット数：<%= detail.sets %> セット</p>
+    <hr>
+  </div>
 <% end %>
