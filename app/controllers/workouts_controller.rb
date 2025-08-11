@@ -20,6 +20,7 @@ class WorkoutsController < ApplicationController
 
   def edit
     @workout = Workout.find(params[:id])
+    @workout.workout_details.build if @workout.workout_details.empty?
   end
 
   def update

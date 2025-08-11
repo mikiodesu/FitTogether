@@ -2,7 +2,7 @@
 
 <%= image_tag @workout.user.get_profile_image(100, 100) %>
 <p>ニックネーム：<%= link_to @workout.user.name, user_path(@workout.user) %></p>
-<p>日付：<%= @workout.date %></p>
+<p>日付：<%= @workout.date.strftime('%-m/%-d') %></p>
 <p>一言メモ：<%= @workout.memo %></p>
 
 <% if @workout.user == current_user %>

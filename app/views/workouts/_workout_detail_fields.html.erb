@@ -1,0 +1,28 @@
+<script type="text/template" id="workout_detail_template">
+  <div class="workout-detail-fields" style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
+    <label for="workout_workout_details_attributes_new_workout_details_exercise_name">種目</label><br>
+    <input type="text" name="workout[workout_details_attributes][new_workout_details][exercise_name]" id="workout_workout_details_attributes_new_workout_details_exercise_name"><br>
+
+    <label for="workout_workout_details_attributes_new_workout_details_bodypart">部位</label><br>
+    <select name="workout[workout_details_attributes][new_workout_details][bodypart]" id="workout_workout_details_attributes_new_workout_details_bodypart">
+      <option value="chest">胸</option>
+      <option value="arms">腕</option>
+      <option value="shoulders">肩</option>
+      <option value="back">背中</option>
+      <option value="abs">腹筋</option>
+      <option value="legs">脚</option>
+    </select><br>
+
+    <label for="workout_workout_details_attributes_new_workout_details_weight">重量(kg)</label><br>
+    <input type="number" name="workout[workout_details_attributes][new_workout_details][weight]" id="workout_workout_details_attributes_new_workout_details_weight"><br>
+
+    <label for="workout_workout_details_attributes_new_workout_details_reps">回数</label><br>
+    <input type="number" name="workout[workout_details_attributes][new_workout_details][reps]" id="workout_workout_details_attributes_new_workout_details_reps"><br>
+
+    <label for="workout_workout_details_attributes_new_workout_details_sets">セット数</label><br>
+    <input type="number" name="workout[workout_details_attributes][new_workout_details][sets]" id="workout_workout_details_attributes_new_workout_details_sets"><br>
+
+    <input type="hidden" name="workout[workout_details_attributes][new_workout_details][_destroy]" id="workout_workout_details_attributes_new_workout_details__destroy" value="false">
+    <button type="button" class="remove_workout_detail">削除</button>
+  </div>
+</script>
