@@ -6,6 +6,7 @@ class User < ApplicationRecord
          
   has_one_attached :profile_image
   has_many :workouts, dependent: :destroy
+  has_many :comments, dependent: :destroy
   validates :name, presence: true, length: { maximum: 12 }
   validates :introduction, length: { maximum: 100 }
 

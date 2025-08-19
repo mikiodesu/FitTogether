@@ -23,16 +23,5 @@
   </div>
 <% end %>
 
-<h2>コメント一覧</h2>
-<% @comments.each do |comment| %>
-  <p>
-    <strong><%= comment.user.name %>:</strong>
-    <%= comment.content %>
-  </p>
-<% end %>
-
-<h3>コメントを追加</h3>
-<%= form_with(model: [@workout, @comment], local: true) do |f| %>
-  <%= f.text_area :content, placeholder: "コメントを追加..." %>
-  <%= f.submit "投稿" %>
-<% end %>
+  <%= render "comments/index", workout: @workout %>
+  <%= render "comments/form", workout: @workout, comment: @comment %>
