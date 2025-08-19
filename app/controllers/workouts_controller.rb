@@ -16,6 +16,8 @@ class WorkoutsController < ApplicationController
 
   def show
     @workout = Workout.find(params[:id])
+    @comments = @workout.comments.includes(:user)
+    @comment = Comment.new
   end
 
   def edit

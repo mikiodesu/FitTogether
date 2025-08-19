@@ -5,8 +5,8 @@
     <div class="workout-item">
       <%= image_tag workout.user.get_profile_image(50, 50), class: "profile-img" %>
       <div class="workout-content">
-        <p class="user-name"><%= link_to workout.user.name, user_path(workout.user) %></p>
         <p class="workout-date"><%= link_to "日付：#{workout.date.strftime('%-m/%-d')}", workout_path(workout) %></p>
+        <p class="user-name"><%= link_to workout.user.name, user_path(workout.user) %></p>
         <p class="workout-memo"><%= workout.memo %></p>
 
         <!-- いいね & コメント -->
@@ -14,19 +14,6 @@
           <%= link_to "👍 #{workout.likes.count}", workout_likes_path(workout), method: :post %>
           <%= link_to "💬 コメント(#{workout.comments.count})", workout_path(workout) %>
         </div>
-
-        <!-- コメント表示（最新3件だけなど） -->
-        <div class="comments">
-          <% workout.comments.limit(3).each do |comment| %>
-            <p><strong><%= comment.user.name %>:</strong> <%= comment.content %></p>
-          <% end %>
-        </div>
-
-        <!-- コメントフォーム -->
-        <%= form_with(model: [workout, Comment.new], local: true) do |f| %>
-          <%= f.text_field :content, placeholder: "コメントを追加..." %>
-          <%= f.submit "投稿" %>
-        <% end %>
       </div>
     </div>
   <% end %>
