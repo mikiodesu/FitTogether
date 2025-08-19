@@ -11,7 +11,7 @@
 
         <!-- いいね & コメント -->
         <div class="workout-actions">
-          <%= link_to "👍 #{workout.likes.count}", workout_likes_path(workout), method: :post %>
+          <%= render "likes/like", workout: workout %>
           <%= link_to "💬 コメント(#{workout.comments.count})", workout_path(workout) %>
         </div>
       </div>
