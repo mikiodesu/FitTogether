@@ -1,4 +1,3 @@
-<%= render 'layouts/header' %>
 
 <%= image_tag @workout.user.get_profile_image(100, 100) %>
 <p>ニックネーム：<%= link_to @workout.user.name, user_path(@workout.user) %></p>

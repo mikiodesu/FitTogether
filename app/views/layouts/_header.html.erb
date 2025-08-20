@@ -4,6 +4,7 @@
     <% if user_signed_in? %>
       <li><%= link_to '新規投稿', new_workout_path %></li>
       <li><%= link_to '一覧', workouts_path %></li>
+      <li><%= link_to 'ユーザ一覧', users_path %></li>
       <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
       <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
     <% else %>

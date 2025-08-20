@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get '/about', to: 'homes#about', as: 'about'
  
-  resources :users, only: [:show, :edit, :update, :destroy] do
+  resources :users, only: [:index, :show, :edit, :update, :destroy] do
     collection do  #セッション情報でわかるためmemberでない(ID不要)
       get 'mypage'
       patch 'update_credentials'

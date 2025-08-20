@@ -1,14 +1,22 @@
 class UsersController < ApplicationController
+
+  def index
+    if params[:content].present?
+      @users = User.search_for(params[:content], params[:method])
+    else
+      @users = User.where.not(id: current_user.id)
+    end
+  end
+
   def show
     @user = User.find(params[:id])
-    
-  if @user == current_user
-    # 自分のページなら全投稿取得
-    @workouts = @user.workouts.order(created_at: :desc)
-  else
-    # 他人のページなら公開投稿のみ取得
-    @workouts = @user.workouts.where(is_public: true).order(created_at: :desc)
-  end
+    if @user == current_user
+      # 自分のページなら全投稿取得
+      @workouts = @user.workouts.order(created_at: :desc)
+    else
+      # 他人のページなら公開投稿のみ取得
+      @workouts = @user.workouts.where(is_public: true).order(created_at: :desc)
+    end
   end
 
   def edit

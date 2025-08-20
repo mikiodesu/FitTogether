@@ -18,4 +18,21 @@ class User < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
+
+   # 検索メソッド
+   def self.search_for(content, method)
+    return all if content.blank?
+  
+    case method
+    when "perfect"
+      where(name: content)
+    when "forward"
+      where("name LIKE ?", "#{content}%")
+    when "backward"
+      where("name LIKE ?", "%#{content}")
+    else # partial
+      where("name LIKE ?", "%#{content}%")
+    end
+  end
+
 end
