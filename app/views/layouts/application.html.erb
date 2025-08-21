@@ -15,6 +15,8 @@
     <% unless current_admin %>
       <%= render 'layouts/header' %>
     <% end %>
-    <%= yield %>
+    <div class="main-content">
+      <%= yield %>
+    </div>
   </body>
 </html>

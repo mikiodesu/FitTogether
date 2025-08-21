@@ -1,0 +1,2 @@
+document.querySelector("#like-button-<%= @workout.id %>").innerHTML =
+  "<%= j(render 'likes/like', workout: @workout) %>";

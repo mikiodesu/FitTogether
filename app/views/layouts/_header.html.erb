@@ -1,22 +1,76 @@
-
 <nav>
   <ul class="nav-list">
     <% if user_signed_in? %>
-      <li><%= link_to '新規投稿', new_workout_path %></li>
-      <li><%= link_to '一覧', workouts_path %></li>
-      <li><%= link_to 'ユーザ一覧', users_path %></li>
-      <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
-      <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-    <% else %>
       <li>
-        <%= link_to root_path do %>
-          <%= image_tag "logo.png", alt: "FitTogetherロゴ", width: 60, height: 60  %>
-          <span class="logo-text">FitTogether</span>
+        <%= link_to root_path, class: "logo-link" do %>
+          <%= image_tag "logo.png", alt: "FitTogetherロゴ", width: 200, height: 200  %>
         <% end %>
       </li>
-      <li><%= link_to "about", about_path %></li>
-      <li><%= link_to "新規登録", new_user_registration_path %></li>
-      <li><%= link_to "ログイン", new_user_session_path %></li>
+
+      <li><%= link_to '+', new_workout_path, class: "new-workout-btn" %></li>
+
+      <li>
+        <%= link_to workouts_path do %>
+          Timeline<br>
+          <span class="sub-text">タイムライン</span>
+        <% end %>
+      </li>
+      
+      <li>
+        <%= link_to users_path do %>
+          Members<br>
+          <span class="sub-text">会員一覧</span>
+        <% end %>
+      </li>
+     
+      <li>
+        <%= link_to user_path(current_user.id) do %>
+          Mypage<br>
+          <span class="sub-text">マイページ</span>
+        <% end %>
+      </li>
+      
+      <li>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          Log out<br>
+          <span class="sub-text">ログアウト</span>
+        <% end %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to root_path, class: "logo-link" do %>
+          <%= image_tag "logo.png", alt: "FitTogetherロゴ", width: 200, height: 200  %>
+        <% end %>
+      </li>
+
+      <li>
+        <% if current_page?(root_path) %>
+          <a href="#concept">
+            Concept<br>
+            <span class="sub-text">コンセプト</span>
+          </a>
+        <% else %>
+          <%= link_to root_path(anchor: "concept") do %>
+            Concept<br>
+            <span class="sub-text">コンセプト</span>
+          <% end %>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to new_user_registration_path do %>
+          Sign up for membership<br>
+          <span class="sub-text">メンバー登録</span>
+        <% end %>
+      </li>
+        
+      <li>
+        <%= link_to new_user_session_path do %>
+          Log in<br>
+          <span class="sub-text">ログイン</span>
+        <% end %>
+      </li>
+      
     <% end %>
   </ul>
 </nav>

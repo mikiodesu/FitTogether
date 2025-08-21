@@ -1,13 +1,19 @@
 class LikesController < ApplicationController
   def create
-    like = current_user.likes.new(workout_id: params[:workout_id])
-    like.save
-    redirect_to request.referer
+    @workout = Workout.find(params[:workout_id])
+    current_user.likes.create(workout: @workout)
+    respond_to do |format|
+      format.html { redirect_to @workout }
+      format.js
+    end
   end
 
   def destroy
-    like = current_user.likes.find_by(workout_id: params[:workout_id])
-    like.destroy
-    redirect_to request.referer
+    @workout = Workout.find(params[:workout_id])
+      current_user.likes.find_by(workout_id: @workout.id)&.destroy
+      respond_to do |format|
+        format.html { redirect_to @workout }
+        format.js
+      end
   end
 end

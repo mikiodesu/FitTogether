@@ -14,76 +14,27 @@
  *= require_self
  */
 
-
- .nav-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 20px;
-  background-color: #222;
-  border-radius: 5px;
-
-  height: 70px;          /* ヘッダーの高さを固定 */
-  align-items: center;   /* 子要素を縦中央揃え */
+ html {
+  scroll-behavior: smooth;
 }
 
-.nav-list li {
-  display: flex;
-  align-items: center;
+.main-content {
+  padding-top: 200px; /* ヘッダーの高さ分 */
 }
 
-.nav-list li a {
+ .top-background {
+  background-image: url('gym.png'); /* 背景画像 */
+  background-size: cover;      /* 画面全体に拡大 */
+  background-position: center; /* 中央配置 */
+  height: 800px;               /* 高さ調整 */
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: center; 
-  padding: 10px 15px;
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+  color: black;                
   text-align: center;
+  
 }
 
-.nav-list li a:hover {
-  background-color: #555;
-}
 
-.workouts-timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.workout-item {
-  display: flex;
-  gap: 10px;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-
-.profile-img {
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-}
-
-.workout-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.workout-actions {
-  display: flex;
-  gap: 15px;
-  margin-top: 5px;
-}
-
-.comments {
-  margin-top: 5px;
-  padding-left: 10px;
-  border-left: 2px solid #eee;
-}
 

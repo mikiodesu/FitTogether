@@ -72,3 +72,5 @@ group :production do
   gem 'mysql2'
 end
 
+ #非同期通信
+gem 'jquery-rails'
