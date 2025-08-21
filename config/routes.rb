@@ -1,10 +1,26 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :admins, path: 'admin', controllers: {
+    sessions: 'admin/sessions',
+    registrations: 'admin/registrations',
+    passwords: 'admin/passwords'
+  }
+
+  namespace :admin do
+    root to: 'dashboard#top'  # 管理者トップページ
+    resources :users, only: [:index, :show, :destroy]
+    resources :workouts, only: [:index, :destroy] do
+      resources :comments, only: [:index, :destroy], controller: "workout_comments"
+    end
+  end
+
+  devise_for :users, controllers: {
+    registrations: 'registrations'
+  }
   root to: 'homes#top'
-  get '/about', to: 'homes#about', as: 'about'
  
-  resources :users, only: [:show, :edit, :update, :destroy] do
+  resources :users, only: [:index, :show, :edit, :update, :destroy] do
+    resource :relationships, only: [:create, :destroy]
     collection do  #セッション情報でわかるためmemberでない(ID不要)
       get 'mypage'
       patch 'update_credentials'

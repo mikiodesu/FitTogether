@@ -6,6 +6,15 @@ class User < ApplicationRecord
          
   has_one_attached :profile_image
   has_many :workouts, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  # フォローする側
+  has_many :relationships, foreign_key: :follower_id, dependent: :destroy
+  has_many :followings, through: :relationships, source: :followed
+  # フォローされる側
+  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: :followed_id, dependent: :destroy
+  has_many :followers, through: :reverse_of_relationships, source: :follower
+
   validates :name, presence: true, length: { maximum: 12 }
   validates :introduction, length: { maximum: 100 }
 
@@ -16,4 +25,33 @@ class User < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
+
+   # 検索メソッド
+  def self.search_for(content, method)
+    return all if content.blank?
+  
+    case method
+    when "perfect"
+      where(name: content)
+    when "forward"
+      where("name LIKE ?", "#{content}%")
+    when "backward"
+      where("name LIKE ?", "%#{content}")
+    else # partial
+      where("name LIKE ?", "%#{content}%")
+    end
+  end
+
+  def follow(user)
+    relationships.find_or_create_by(followed: user)
+  end
+
+  def unfollow(user)
+    relationships.find_by(followed: user)&.destroy
+  end
+
+  def following?(user)
+    followings.include?(user)
+  end
+
 end

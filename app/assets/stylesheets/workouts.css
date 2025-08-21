@@ -1,0 +1,36 @@
+.workouts-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.workout-item {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.profile-img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.workout-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.workout-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 5px;
+}
+
+.comments {
+  margin-top: 5px;
+  padding-left: 10px;
+  border-left: 2px solid #eee;
+}

@@ -14,3 +14,6 @@ import "./workout_details"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+//= require jquery
+//= require rails-ujs
