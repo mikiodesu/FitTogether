@@ -12,7 +12,9 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %> 
+    <% unless current_admin %>
+      <%= render 'layouts/header' %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

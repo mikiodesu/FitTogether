@@ -1,0 +1,18 @@
+<h1>管理者ダッシュボード</h1>
+
+<nav>
+  <ul>
+    <li><%= link_to "ユーザ管理", admin_users_path %></li>
+    <li><%= link_to "投稿管理", admin_workouts_path %></li>
+    <li>コメント管理
+      <ul>
+        <% @workouts.each do |workout| %>
+          <li>
+            <%= link_to "#{workout.title} のコメント管理", admin_workout_comments_path(workout) %>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+    <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+  </ul>
+</nav>

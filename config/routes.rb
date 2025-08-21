@@ -7,14 +7,16 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    # root to: 'users#index'  # 管理者トップページ
+    root to: 'dashboard#top'  # 管理者トップページ
     resources :users, only: [:index, :show, :destroy]
     resources :workouts, only: [:index, :destroy] do
       resources :comments, only: [:index, :destroy]
     end
   end
 
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'registrations'
+  }
   root to: 'homes#top'
   get '/about', to: 'homes#about', as: 'about'
  
