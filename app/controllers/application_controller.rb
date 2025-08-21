@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!, except: [:top, :about]
-
+  before_action :authenticate_user!, unless: -> { self.class.name.start_with?("Admin::") },  except: [:top, :about]
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  
   protected
 
   def configure_permitted_parameters

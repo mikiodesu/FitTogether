@@ -8,7 +8,7 @@
       <ul>
         <% @workouts.each do |workout| %>
           <li>
-            <%= link_to "#{workout.title} のコメント管理", admin_workout_comments_path(workout) %>
+            <%= link_to "#{workout.date} のコメント管理", admin_workout_comments_path(workout) %>
           </li>
         <% end %>
       </ul>

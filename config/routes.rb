@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     root to: 'dashboard#top'  # 管理者トップページ
     resources :users, only: [:index, :show, :destroy]
     resources :workouts, only: [:index, :destroy] do
-      resources :comments, only: [:index, :destroy]
+      resources :comments, only: [:index, :destroy], controller: "workout_comments"
     end
   end
 

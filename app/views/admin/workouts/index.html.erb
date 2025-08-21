@@ -1,0 +1,28 @@
+<h1>投稿一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>メモ</th>
+      <th>ユーザ</th>
+      <th>作成日</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @workouts.each do |workout| %>
+      <tr>
+        <td><%= workout.id %></td>
+        <td><%= workout.memo %></td>
+        <td><%= workout.user.name %></td>
+        <td><%= workout.created_at.strftime("%Y/%m/%d") %></td>
+        <td>
+          <%= link_to "削除", admin_workout_path(workout), method: :delete, data: { confirm: "本当に削除しますか？" } %>
+          |
+          <%= link_to "コメント管理", admin_workout_comments_path(workout) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
