@@ -1,24 +1,30 @@
-<h1>ユーザー一覧</h1>
+<h1>会員一覧</h1>
 
 <%= render 'form' %>
 
 <% if @users.present? %>
-  <ul>
+  <div class="users-list">
     <% @users.each do |user| %>
-      <li>
-        <%= image_tag user.get_profile_image(50, 50), class: "profile-img" %>
-        <%= link_to user.name, user_path(user) %>
+      <div class="user-item d-flex align-items-center justify-content-between border-bottom py-3">
+        <!-- 左：プロフィール画像＋名前 -->
+        <div class="d-flex align-items-center gap-3">
+          <%= image_tag user.get_profile_image(50, 50), class: "profile-img" %>
+          <%= link_to user.name, user_path(user), class: "fw-bold text-decoration-none" %>
+        </div>
 
+        <!-- 右：フォローボタン -->
         <% unless current_user == user %>
-          <% if current_user.following?(user) %>
-            <%= button_to "フォロー解除", user_relationships_path(user), method: :delete %>
-          <% else %>
-            <%= button_to "フォローする", user_relationships_path(user), method: :post %>
-          <% end %>
+          <div>
+            <% if current_user.following?(user) %>
+              <%= button_to "フォロー解除", user_relationships_path(user), method: :delete, class: "btn btn-outline-danger btn-sm" %>
+            <% else %>
+              <%= button_to "フォローする", user_relationships_path(user), method: :post, class: "btn btn-primary btn-sm" %>
+            <% end %>
+          </div>
         <% end %>
-      </li>
+      </div>
     <% end %>
-  </ul>
+  </div>
 <% else %>
   <p>該当するユーザーはいません</p>
 <% end %>

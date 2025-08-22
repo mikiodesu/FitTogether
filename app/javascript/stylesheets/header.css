@@ -10,6 +10,7 @@
   width: 100%;  
   height: 200px;          /* ヘッダーの高さを固定 */
   align-items: center;   /* 子要素を縦中央揃え */
+  z-index: 9999; 
 }
 
 /* ロゴを左端に寄せる */

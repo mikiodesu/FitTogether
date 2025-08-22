@@ -1,45 +1,47 @@
+<div class="container" style="max-width: 600px;">
+  <h1 class="mb-4">New Post</h1>
 
+  <%= form_with model: @workout, local: true, class: "needs-validation" do |f| %>
+    <div class="mb-3">
+      <%= f.label :date, "トレーニング日", class: "form-label" %>
+      <%= f.date_field :date, class: "form-control" %>
+    </div>
 
-<h1>新規トレーニング投稿</h1>
+    <div class="mb-3">
+      <%= f.label :memo, "一言メモ", class: "form-label" %>
+      <%= f.text_area :memo, class: "form-control", rows: 3 %>
+    </div>
 
-<%= form_with model: @workout, local: true do |f| %>
-  <div>
-    <%= f.label :date, "トレーニング日" %><br>
-    <%= f.date_field :date %>
-  </div>
+    <div class="mb-3">
+      <%= f.label :is_public, "公開設定", class: "form-label" %>
+      <%= f.select :is_public, [["公開", true], ["非公開", false]], {}, class: "form-select" %>
+    </div>
 
-  <div>
-    <%= f.label :memo, "一言メモ" %><br>
-    <%= f.text_area :memo %>
-  </div>
+    <h3 class="mt-4 mb-3">トレーニング詳細</h3>
 
-  <div>
-    <%= f.label :is_public, "公開設定" %><br>
-    <%= f.select :is_public, [["公開", true], ["非公開", false]] %>
-  </div>
+    <div id="workout_details" class="mb-3">
+      <%= f.fields_for :workout_details do |detail_form| %>
+        <%= render 'workout_detail_fields', f: detail_form %>
+      <% end %>
+    </div>
 
-  <h3>トレーニング詳細</h3>
+    <div class="mb-3">
+      <button type="button" id="add_workout_detail" class="btn btn-outline-primary">
+        ＋種目を追加
+      </button>
+    </div>
 
-  <div id="workout_details">
-    <%= f.fields_for :workout_details do |detail_form| %>
-      <%= render 'workout_detail_fields', f: detail_form %>
-    <% end %>
-  </div>
+    <div>
+      <%= f.submit "投稿", class: "btn btn-success" %>
+    </div>
 
-  <div>
-    <button type="button" id="add_workout_detail">＋種目を追加</button>
-  </div>
-
-  <div>
-    <%= f.submit "投稿" %>
-  </div>
-
-  <!-- 追加用フォームのテンプレート -->
-  <script type="text/template" id="workout_detail_template">
-  <%= j(
-    f.fields_for(:workout_details, WorkoutDetail.new, child_index: "new_workout_details") do |detail_form|
-      render('workout_detail_fields', f: detail_form)
-    end
-  ) %>
-  </script>
-<% end %>
+    <!-- 追加用フォームのテンプレート -->
+    <script type="text/template" id="workout_detail_template">
+      <%= j(
+        f.fields_for(:workout_details, WorkoutDetail.new, child_index: "new_workout_details") do |detail_form|
+          render('workout_detail_fields', f: detail_form)
+        end
+      ) %>
+    </script>
+  <% end %>
+</div>

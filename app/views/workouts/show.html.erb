@@ -1,26 +1,39 @@
+<div class="container" style="max-width: 700px;">
+  <div class="card mb-4 p-3">
+    <div class="d-flex align-items-center mb-3">
+      <%= link_to user_path(@workout.user) do %>
+        <%= image_tag @workout.user.get_profile_image(100, 100), class: "rounded-circle me-3" %>
+      <% end %>
+      <div>
+        <p class="mb-1"><strong>ニックネーム：</strong><%= link_to @workout.user.name, user_path(@workout.user), class: "text-decoration-none" %></p>
+        <p class="mb-0"><strong>日付：</strong><%= @workout.date.strftime('%-m/%-d') %></p>
+      </div>
+    </div>
 
-<%= image_tag @workout.user.get_profile_image(100, 100) %>
-<p>ニックネーム：<%= link_to @workout.user.name, user_path(@workout.user) %></p>
-<p>日付：<%= @workout.date.strftime('%-m/%-d') %></p>
-<p>一言メモ：<%= @workout.memo %></p>
+    <p><strong>一言メモ：</strong> <%= @workout.memo %></p>
 
-<% if @workout.user == current_user %>
-  <%= link_to  "編集", edit_workout_path(@workout) %>
-  <%= link_to "削除", workout_path(@workout), method: :delete %>
-<% end %>
+    <% if @workout.user == current_user %>
+      <div class="mb-3">
+        <%= link_to "編集", edit_workout_path(@workout), class: "btn btn-outline-primary btn-sm me-2" %>
+        <%= link_to "削除", workout_path(@workout), method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？" } %>
+      </div>
+    <% end %>
 
-<h3>トレーニング詳細</h3>
-<% @workout.workout_details.each do |detail| %>
-  <div>
-    <p>種目：<%= detail.exercise_name %></p>
-    <p>部位：<%= t("activerecord.attributes.workout_detail.bodypart.#{detail.bodypart}") %></p>
-    
-    <p>重量：<%= detail.weight %> kg</p>
-    <p>回数：<%= detail.reps %> 回</p>
-    <p>セット数：<%= detail.sets %> セット</p>
-    <hr>
+    <h5 class="mt-3">トレーニング詳細</h5>
+    <div class="list-group mb-3">
+      <% @workout.workout_details.each do |detail| %>
+        <div class="list-group-item">
+          <p class="mb-1"><strong>種目：</strong> <%= detail.exercise_name %></p>
+          <p class="mb-1"><strong>部位：</strong> <%= t("activerecord.attributes.workout_detail.bodypart.#{detail.bodypart}") %></p>
+          <p class="mb-1"><strong>重量：</strong> <%= detail.weight %> kg</p>
+          <p class="mb-1"><strong>回数：</strong> <%= detail.reps %> 回</p>
+          <p class="mb-0"><strong>セット数：</strong> <%= detail.sets %> セット</p>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- コメント部分 -->
+    <%= render "comments/index", workout: @workout %>
+    <%= render "comments/form", workout: @workout, comment: @comment %>
   </div>
-<% end %>
-
-  <%= render "comments/index", workout: @workout %>
-  <%= render "comments/form", workout: @workout, comment: @comment %>
+</div>
