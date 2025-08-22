@@ -1,5 +1,5 @@
 .top-background {
-  background-image: url('gym.png'); /* 背景画像 */
+  background-image: url(../images/gym.png); /* 背景画像 */
   background-size: cover;      /* 画面全体に拡大 */
   background-position: center; /* 中央配置 */
   height: 700px;               /* 高さ調整 */

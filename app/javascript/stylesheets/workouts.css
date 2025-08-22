@@ -5,16 +5,22 @@
 }
 
 .workout-item {
-  display: flex;
+  align-items: flex-start;      /* 上揃え */
+  justify-content: space-between;
   gap: 10px;
   padding: 10px;
   border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s ease; /* ホバー変色用 */
+}
+
+.workout-item:hover {
+  background-color: #f5f5f5;    /* ホバー時に色を変える */
 }
 
 .profile-img {
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 120px;
+  height: 120px;
   object-fit: cover;
 }
 
