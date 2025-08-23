@@ -1,13 +1,38 @@
-<!-- ユーザーの詳細 -->
-<div>
-  <h3><%= @user.name %></h3>
-  <%= image_tag @user.get_profile_image(100,100) %>
-  <p><%= @user.introduction %></p>
+<!-- ユーザーの詳細 (Bootstrapカードレイアウト) -->
+<div class="card shadow-sm mb-4" style="max-width: 500px;">
+  <div class="card-body text-center">
 
-  <% if @user == current_user  %>
-   <p><%= link_to "プロフィール編集", edit_user_path(current_user) %></p>
-   <p><%= link_to "アカウント設定", mypage_users_path %></p>
-  <% end %>
+    <!-- プロフィール画像 -->
+    <%= image_tag @user.get_profile_image(100,100), class: "rounded-circle mb-3 border" %>
+
+    <!-- ユーザー名 -->
+    <h3 class="card-title"><%= @user.name %></h3>
+
+    <!-- 自己紹介 -->
+    <p class="text-muted"><%= @user.introduction %></p>
+
+    <!-- フォロー・フォロワー -->
+    <div class="d-flex justify-content-center gap-4 my-3">
+      <p class="mb-0">
+        <%= link_to followings_user_path(@user), class: "text-decoration-none fw-bold" do %>
+          フォロー中 <span class="badge bg-primary"><%= @user.followings.count %></span>
+        <% end %>
+      </p>
+      <p class="mb-0">
+        <%= link_to followers_user_path(@user), class: "text-decoration-none fw-bold" do %>
+          フォロワー <span class="badge bg-success"><%= @user.followers.count %></span>
+        <% end %>
+      </p>
+    </div>
+
+    <!-- 自分のページなら編集ボタン表示 -->
+    <% if @user == current_user %>
+      <div class="d-flex justify-content-center gap-2 mt-3">
+        <%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-outline-primary btn-sm" %>
+        <%= link_to "アカウント設定", mypage_users_path, class: "btn btn-outline-secondary btn-sm" %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <!-- ユーザーの投稿一覧 -->

@@ -1,0 +1,7 @@
+<h2>フォロー中<%= @user.followings.count %>人</h2>
+
+<% @users.each do |user| %>
+  <div>
+    <%= link_to user.name, user_path(user) %>
+  </div>
+<% end %>
