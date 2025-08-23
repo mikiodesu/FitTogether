@@ -18,13 +18,13 @@
           <!-- フォロー・フォロワー -->
           <div class="d-flex justify-content-center gap-4 my-3">
             <p class="mb-0">
-              <%= link_to followings_user_path(@user), class: "text-decoration-none fw-bold" do %>
-                フォロー中 <span class="badge bg-primary"><%= @user.followings.count %></span>
+              <%= link_to followings_user_path(@user), class: "text-decoration-none fw-bold text-primary" do %>
+                フォロー中 <span><%= @user.followings.count %></span>
               <% end %>
             </p>
             <p class="mb-0">
-              <%= link_to followers_user_path(@user), class: "text-decoration-none fw-bold" do %>
-                フォロワー <span class="badge bg-success"><%= @user.followers.count %></span>
+              <%= link_to followers_user_path(@user), class: "text-decoration-none fw-bold text-success" do %>
+                フォロワー <span><%= @user.followers.count %></span>
               <% end %>
             </p>
           </div>

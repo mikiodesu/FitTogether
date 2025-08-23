@@ -15,9 +15,16 @@
  */
 
  /* 上の空白消す */
+
+ html, body {
+  height: 100%;
+}
+
  body {
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
  html {
@@ -26,6 +33,7 @@
 
 .main-content {
   padding-top: 200px; /* ヘッダーの高さ分 */
+  flex: 1; /* メインコンテンツが余白を埋める */
 }
 
 .footer {
