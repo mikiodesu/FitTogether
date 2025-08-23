@@ -24,14 +24,22 @@
   scroll-behavior: smooth;
 }
 
-
-
-
-
 .main-content {
   padding-top: 200px; /* ヘッダーの高さ分 */
 }
 
+.footer {
+  text-align: center;
+  background-color: black;
+  color: white;
+  height: 30px;    
+  margin-top: 50px;   
+}
+
+.footer p {
+  
+  line-height: 30px;  /* 高さと同じ値にし縦中央に */
+}
  
 
 

@@ -18,5 +18,8 @@
     <div class="main-content">
       <%= yield %>
     </div>
+    <% unless current_admin %>
+      <%= render 'layouts/footer' %>
+    <% end %>
   </body>
 </html>

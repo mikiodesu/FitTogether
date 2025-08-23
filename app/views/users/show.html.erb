@@ -1,65 +1,73 @@
-<!-- ユーザーの詳細 (Bootstrapカードレイアウト) -->
-<div class="card shadow-sm mb-4" style="max-width: 500px;">
-  <div class="card-body text-center">
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
 
-    <!-- プロフィール画像 -->
-    <%= image_tag @user.get_profile_image(100,100), class: "rounded-circle mb-3 border" %>
+      <!-- ユーザーの詳細 (Bootstrapカードレイアウト) -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-body text-center">
 
-    <!-- ユーザー名 -->
-    <h3 class="card-title"><%= @user.name %></h3>
+          <!-- プロフィール画像 -->
+          <%= image_tag @user.get_profile_image(100,100), class: "rounded-circle mb-3 border" %>
 
-    <!-- 自己紹介 -->
-    <p class="text-muted"><%= @user.introduction %></p>
+          <!-- ユーザー名 -->
+          <h3 class="card-title"><%= @user.name %></h3>
 
-    <!-- フォロー・フォロワー -->
-    <div class="d-flex justify-content-center gap-4 my-3">
-      <p class="mb-0">
-        <%= link_to followings_user_path(@user), class: "text-decoration-none fw-bold" do %>
-          フォロー中 <span class="badge bg-primary"><%= @user.followings.count %></span>
+          <!-- 自己紹介 -->
+          <p class="text-muted"><%= @user.introduction %></p>
+
+          <!-- フォロー・フォロワー -->
+          <div class="d-flex justify-content-center gap-4 my-3">
+            <p class="mb-0">
+              <%= link_to followings_user_path(@user), class: "text-decoration-none fw-bold" do %>
+                フォロー中 <span class="badge bg-primary"><%= @user.followings.count %></span>
+              <% end %>
+            </p>
+            <p class="mb-0">
+              <%= link_to followers_user_path(@user), class: "text-decoration-none fw-bold" do %>
+                フォロワー <span class="badge bg-success"><%= @user.followers.count %></span>
+              <% end %>
+            </p>
+          </div>
+
+          <!-- 自分のページなら編集ボタン表示 -->
+          <% if @user == current_user %>
+            <div class="d-flex justify-content-center gap-2 mt-3">
+              <%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-outline-primary btn-sm" %>
+              <%= link_to "アカウント設定", mypage_users_path, class: "btn btn-outline-secondary btn-sm" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- ユーザーの投稿一覧 -->
+      <div class="user-workouts mt-4">
+        <h4 class="mb-3 text-center">投稿履歴</h4>
+
+        <% if @workouts.present? %>
+          <% @workouts.each do |workout| %>
+            <div class="workout-item border rounded p-3 mb-3 shadow-sm">
+              <!-- 日付リンク -->
+              <p class="mb-1 text-center">
+                <%= link_to "日付：#{workout.date.strftime('%-m/%-d')}", workout_path(workout),
+                            class: "fw-bold text-decoration-none text-primary" %>
+              </p>
+
+              <!-- 一言メモ -->
+              <p class="mb-1 text-muted text-center">一言メモ：<%= workout.memo %></p>
+
+              <!-- 公開設定（本人のみ表示） -->
+              <% if @user == current_user %>
+                <p class="mb-0 small text-secondary text-center">
+                  公開設定: <%= workout.is_public ? "公開" : "非公開" %>
+                </p>
+              <% end %>
+            </div>
+          <% end %>
+        <% else %>
+          <p class="text-muted text-center">まだ投稿はありません</p>
         <% end %>
-      </p>
-      <p class="mb-0">
-        <%= link_to followers_user_path(@user), class: "text-decoration-none fw-bold" do %>
-          フォロワー <span class="badge bg-success"><%= @user.followers.count %></span>
-        <% end %>
-      </p>
+      </div>
+
     </div>
-
-    <!-- 自分のページなら編集ボタン表示 -->
-    <% if @user == current_user %>
-      <div class="d-flex justify-content-center gap-2 mt-3">
-        <%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-outline-primary btn-sm" %>
-        <%= link_to "アカウント設定", mypage_users_path, class: "btn btn-outline-secondary btn-sm" %>
-      </div>
-    <% end %>
   </div>
-</div>
-
-<!-- ユーザーの投稿一覧 -->
-<div class="user-workouts mt-4">
-  <h4 class="mb-3">投稿履歴</h4>
-
-  <% if @workouts.present? %>
-    <% @workouts.each do |workout| %>
-      <div class="workout-item border rounded p-3 mb-3 shadow-sm">
-        <!-- 日付リンク -->
-        <p class="mb-1">
-          <%= link_to "日付：#{workout.date.strftime('%-m/%-d')}", workout_path(workout),
-                      class: "fw-bold text-decoration-none text-primary" %>
-        </p>
-
-        <!-- 一言メモ -->
-        <p class="mb-1 text-muted">一言メモ：<%= workout.memo %></p>
-
-        <!-- 公開設定（本人のみ表示） -->
-        <% if @user == current_user %>
-          <p class="mb-0 small text-secondary">
-            公開設定: <%= workout.is_public ? "公開" : "非公開" %>
-          </p>
-        <% end %>
-      </div>
-    <% end %>
-  <% else %>
-    <p class="text-muted">まだ投稿はありません</p>
-  <% end %>
 </div>

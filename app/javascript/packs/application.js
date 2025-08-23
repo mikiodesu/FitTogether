@@ -11,7 +11,6 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application.scss"
 import "../stylesheets/application.css"
-import "../stylesheets/footer.css"
 import "../stylesheets/header.css"
 import "../stylesheets/homes.css"
 import "../stylesheets/likes.css"

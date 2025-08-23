@@ -45,14 +45,14 @@
 
       <li>
         <% if current_page?(root_path) %>
-          <a href="#concept">
-            Concept<br>
-            <span class="sub-text">コンセプト</span>
+          <a href="#feature">
+            Features<br>
+            <span class="sub-text">機能</span>
           </a>
         <% else %>
-          <%= link_to root_path(anchor: "concept") do %>
-            Concept<br>
-            <span class="sub-text">コンセプト</span>
+          <%= link_to root_path(anchor: "feature") do %>
+            features<br>
+            <span class="sub-text">機能</span>
           <% end %>
         <% end %>
       </li>

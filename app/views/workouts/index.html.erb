@@ -1,29 +1,31 @@
-<div class="container workouts-timeline">
-  <% @workouts.each do |workout| %>
-    <div class="workout-item d-flex border-bottom py-3">
-      <!-- 左：プロフィール画像 -->
-      <div class="flex-shrink-0 me-3">
-        <%= link_to user_path(workout.user) do %>
-          <%= image_tag workout.user.get_profile_image(120, 120), class: "profile-img" %>
-        <% end %>
-      </div>
-
-      <!-- 右：投稿内容 -->
-      <div class="workout-content flex-grow-1">
-        <div class="d-flex justify-content-between">
-          <strong><%= workout.user.name %></strong>
-          <small class="text-muted"><%= workout.date.strftime('%-m/%-d') %></small>
+<div class="container d-flex justify-content-center">
+  <div class="workouts-timeline w-75"> <!-- 横幅を75%に制限 -->
+    <% @workouts.each do |workout| %>
+      <div class="workout-item d-flex border-bottom py-3">
+        <!-- 左：プロフィール画像 -->
+        <div class="flex-shrink-0 me-3">
+          <%= link_to user_path(workout.user) do %>
+            <%= image_tag workout.user.get_profile_image(120, 120), class: "profile-img" %>
+          <% end %>
         </div>
 
-        <p class="mb-2"><%= workout.memo %></p>
-
-        <div class="workout-actions d-flex justify-content-start gap-3">
-          <div id="like-button-<%= workout.id %>">
-            <%= render "likes/like", workout: workout %>
+        <!-- 右：投稿内容 -->
+        <div class="workout-content flex-grow-1">
+          <div class="d-flex justify-content-between">
+            <strong><%= workout.user.name %></strong>
+            <small class="text-muted"><%= workout.date.strftime('%-m/%-d') %></small>
           </div>
-          <%= link_to "💬 コメント(#{workout.comments.count})", workout_path(workout) %>
+
+          <p class="mb-2"><%= workout.memo %></p>
+
+          <div class="workout-actions d-flex justify-content-start gap-3">
+            <div id="like-button-<%= workout.id %>">
+              <%= render "likes/like", workout: workout %>
+            </div>
+            <%= link_to "💬 コメント(#{workout.comments.count})", workout_path(workout) %>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
