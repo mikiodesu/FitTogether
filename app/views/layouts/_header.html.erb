@@ -3,7 +3,7 @@
     <% if user_signed_in? %>
       <li>
         <%= link_to root_path, class: "logo-link" do %>
-          <%= image_tag "logo.png", alt: "FitTogetherロゴ", width: 200, height: 200  %>
+          <%= image_tag "logo.png", alt: "FitTogetherロゴ", width: 150, height: 150  %>
         <% end %>
       </li>
 
@@ -13,6 +13,13 @@
         <%= link_to workouts_path do %>
           Timeline<br>
           <span class="sub-text">タイムライン</span>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to analysis_workouts_path(current_user) do %>
+          Analysis<br>
+          <span class="sub-text">分析</span>
         <% end %>
       </li>
       
@@ -39,7 +46,7 @@
     <% else %>
       <li>
         <%= link_to root_path, class: "logo-link" do %>
-          <%= image_tag "logo.png", alt: "FitTogetherロゴ", width: 200, height: 200  %>
+          <%= image_tag "logo.png", alt: "FitTogetherロゴ", width: 150, height: 150  %>
         <% end %>
       </li>
 

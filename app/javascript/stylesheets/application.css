@@ -32,28 +32,16 @@
 }
 
 .main-content {
-  padding-top: 220px; /* ヘッダーの高さ分+20px */
+  padding-top: 180px; /* ヘッダーの高さ分+30px */
   flex: 1; /* メインコンテンツが余白を埋める */
 }
 
 body.top-page .main-content {
-  padding-top: 200px; /* ヘッダー分の空白を打ち消す */
+  padding-top: 150px; /* ヘッダー分の空白を打ち消す */
 }
 
 
-.footer {
-  text-align: center;
-  background-color: black;
-  color: white;
-  height: 30px;    
-  margin-top: 50px;   
-}
 
-.footer p {
-  
-  line-height: 30px;  /* 高さと同じ値にし縦中央に */
-}
- 
 
 
 

@@ -45,3 +45,8 @@
   padding-left: 10px;
   border-left: 2px solid #eee;
 }
+
+#radarChart {
+  max-width: 500px;
+  max-height: 500px;
+}

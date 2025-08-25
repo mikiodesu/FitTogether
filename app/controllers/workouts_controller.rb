@@ -48,23 +48,21 @@ class WorkoutsController < ApplicationController
     redirect_to workouts_path
   end
 
+
   def analysis
-    @workouts = current_user.workouts
+    @workouts = current_user.workouts.where(date: 1.week.ago..Date.today)
+
+    @bodypart_counts = WorkoutDetail
+      .where(workout: @workouts)
+      .group(:bodypart)
+      .sum('reps * sets')
+
+    @chart_labels = WorkoutDetail.bodyparts.keys.map { |k| I18n.t("activerecord.attributes.workout_detail.bodypart_options.#{k}") }
+    @chart_data = WorkoutDetail.bodyparts.keys.map { |k| @bodypart_counts[k.to_s] || 0 }
   end
 
-  def calendar_events
-    workouts = current_user.workouts
-  
-    events = workouts.map do |w|
-      {
-        id: w.id,
-        title: "✔",   # チェックマーク表示
-        start: w.date # 投稿した日を開始日として渡す
-      }
-    end
-  
-    render json: events
-  end
+
+
 
   private
   

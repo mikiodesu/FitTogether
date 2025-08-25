@@ -1,5 +1,3 @@
-
-
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
@@ -16,9 +14,7 @@ import "../stylesheets/homes.css"
 import "../stylesheets/likes.css"
 import "../stylesheets/users.css"
 import "../stylesheets/workouts.css"
-import './calendar'; 
-import '@fullcalendar/core/main.css';
-import '@fullcalendar/daygrid/main.css';
+import "../stylesheets/footer.css"
 
 
 

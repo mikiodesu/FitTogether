@@ -14,39 +14,39 @@
 
 
 <div id="feature" class="container my-5">
-  <h3 class="text-center mb-4">Features</h3>
-  <div class="row flex-column align-items-center">
+  <h3 class="text-center mb-5">Features</h3>
+  <div class="row justify-content-center">
 
     <!-- 記録 -->
-    <div class="col-12 mb-4">
-      <div class="card h-100 shadow-sm d-flex flex-row align-items-center p-3">
-        <div class="card-body text-left">
-          <h5 class="card-title">記録</h5>
-          <p class="card-text">日々のトレーニングを、簡単に記録に残せます</p>
+    <div class="col-md-4 mb-4 mt-4">
+      <div class="card h-100 shadow-sm d-flex flex-column align-items-center p-3">
+        <%= image_tag "post.png", class: "mb-3", alt: "記録", size: "300x300" %>
+        <div class="card-body text-start">
+          <h5 class="card-title">✅記録</h5>
+          <p class="card-text">日々のトレーニングを、簡単に記録</p>
         </div>
-        <%= image_tag "sample.png", class: "ms-3", alt: "記録", size: "200x200" %>
       </div>
     </div>
 
     <!-- シェア -->
-    <div class="col-12 mb-4">
-      <div class="card h-100 shadow-sm d-flex flex-row align-items-center p-3">
-        <div class="card-body text-left">
-          <h5 class="card-title">トレーニングをシェア</h5>
-          <p class="card-text">記録したトレーニングをタイムラインでシェアしましょう</p>
+    <div class="col-md-4 mb-4 mt-4">
+      <div class="card h-100 shadow-sm d-flex flex-column align-items-center p-3">
+        <%= image_tag "timeline.png", class: "mb-3", alt: "シェア", size: "300x300" %>
+        <div class="card-body text-start">
+          <h5 class="card-title">✅トレーニングをシェア</h5>
+          <p class="card-text">トレーニングをタイムラインでシェアしてモチベーションアップ</p>
         </div>
-        <%= image_tag "sample.png", class: "ms-3", alt: "シェア", size: "200x200" %>
       </div>
     </div>
 
     <!-- 分析 -->
-    <div class="col-12 mb-4">
-      <div class="card h-100 shadow-sm d-flex flex-row align-items-center p-3">
-        <div class="card-body text-left">
-          <h5 class="card-title">トレーニング内容を分析</h5>
-          <p class="card-text">週間グラフや部位別グラフで自己管理しましょう</p>
+    <div class="col-md-4 mb-4 mt-4">
+      <div class="card h-100 shadow-sm d-flex flex-column align-items-center p-3">
+        <%= image_tag "analysis.png", class: "mb-3", alt: "分析", size: "300x300" %>
+        <div class="card-body text-start">
+          <h5 class="card-title">✅トレーニング内容を分析</h5>
+          <p class="card-text">部位別チャートでバランスよくトレーニング</p>
         </div>
-        <%= image_tag "sample.png", class: "ms-3", alt: "分析", size: "200x200" %>
       </div>
     </div>
 

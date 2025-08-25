@@ -37,6 +37,9 @@ Rails.application.routes.draw do
   resources :workouts do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
+    collection do
+      get 'analysis'
+    end
   end
  
 end
