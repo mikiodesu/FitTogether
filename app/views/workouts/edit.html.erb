@@ -13,19 +13,15 @@
       </div>
     <% end %>
 
-    <!-- 日付 -->
+    <!-- 日付・メモ・公開設定 -->
     <div class="mb-3">
       <%= f.label :date, "トレーニング日", class: "form-label" %>
       <%= f.date_field :date, class: "form-control" %>
     </div>
-
-    <!-- 一言メモ -->
     <div class="mb-3">
       <%= f.label :memo, "一言メモ", class: "form-label" %>
-      <%= f.text_area :memo, id: "inputMemo", placeholder: "一言メモ", rows: 5, class: "form-control" %>
+      <%= f.text_area :memo, rows: 5, class: "form-control" %>
     </div>
-
-    <!-- 公開非公開設定 -->
     <div class="mb-3">
       <%= f.label :is_public, "公開非公開設定", class: "form-label" %>
       <%= f.select :is_public, [["公開", true], ["非公開", false]], {}, class: "form-select" %>
@@ -35,34 +31,36 @@
     <h3 class="mt-4 mb-3">トレーニング詳細</h3>
     <div id="workout_details" class="mb-3">
       <%= f.fields_for :workout_details do |detail_form| %>
-        <div class="border p-3 rounded mb-3">
-          <div class="mb-2">
-            <%= detail_form.label :exercise_name, "種目", class: "form-label" %>
-            <%= detail_form.text_field :exercise_name, class: "form-control" %>
-          </div>
-
-          <div class="mb-2">
-            <%= detail_form.label :bodypart, "部位", class: "form-label" %>
-            <%= detail_form.select :bodypart, WorkoutDetail.bodyparts.keys.map { |k| [I18n.t("activerecord.attributes.workout_detail.bodypart.#{k}"), k] }, {}, class: "form-select" %>
-          </div>
-
-          <div class="row">
-            <div class="col mb-2">
-              <%= detail_form.label :weight, "重量(kg)", class: "form-label" %>
-              <%= detail_form.number_field :weight, class: "form-control" %>
+        <% if detail_form.object.persisted? %>
+          <!-- 既存詳細は表示のみ -->
+          <div class="border p-3 rounded mb-3">
+            <div class="mb-2">
+              <%= detail_form.label :exercise_name, "種目" %>
+              <%= detail_form.text_field :exercise_name, class: "form-control", readonly: true %>
             </div>
-
-            <div class="col mb-2">
-              <%= detail_form.label :reps, "回数", class: "form-label" %>
-              <%= detail_form.number_field :reps, class: "form-control" %>
+            <div class="mb-2">
+              <%= detail_form.label :bodypart, "部位" %>
+              <%= detail_form.select :bodypart, WorkoutDetail.bodyparts.keys.map { |k| [I18n.t("activerecord.attributes.workout_detail.bodypart.#{k}"), k] }, {}, class: "form-select", disabled: true %>
             </div>
-
-            <div class="col mb-2">
-              <%= detail_form.label :sets, "セット数", class: "form-label" %>
-              <%= detail_form.number_field :sets, class: "form-control" %>
+            <div class="row">
+              <div class="col mb-2">
+                <%= detail_form.label :weight, "重量(kg)" %>
+                <%= detail_form.number_field :weight, class: "form-control", readonly: true %>
+              </div>
+              <div class="col mb-2">
+                <%= detail_form.label :reps, "回数" %>
+                <%= detail_form.number_field :reps, class: "form-control", readonly: true %>
+              </div>
+              <div class="col mb-2">
+                <%= detail_form.label :sets, "セット数" %>
+                <%= detail_form.number_field :sets, class: "form-control", readonly: true %>
+              </div>
             </div>
           </div>
-        </div>
+        <% else %>
+          <!-- 新規追加は編集可 -->
+          <%= render 'workout_detail_fields', f: detail_form %>
+        <% end %>
       <% end %>
     </div>
 
@@ -73,7 +71,7 @@
       </button>
     </div>
 
-    <!-- 送信ボタン -->
+    <!-- 送信 -->
     <div class="mb-3">
       <%= f.submit "変更を保存", class: "btn btn-success" %>
     </div>

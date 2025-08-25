@@ -11,7 +11,7 @@
     
   </head>
 
-  <body>
+  <body class="<%= 'top-page' if current_page?(root_path) %>">
     <% unless current_admin %>
       <%= render 'layouts/header' %>
     <% end %>

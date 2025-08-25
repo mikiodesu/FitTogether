@@ -32,9 +32,14 @@
 }
 
 .main-content {
-  padding-top: 200px; /* ヘッダーの高さ分 */
+  padding-top: 220px; /* ヘッダーの高さ分+20px */
   flex: 1; /* メインコンテンツが余白を埋める */
 }
+
+body.top-page .main-content {
+  padding-top: 200px; /* ヘッダー分の空白を打ち消す */
+}
+
 
 .footer {
   text-align: center;

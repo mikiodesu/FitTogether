@@ -30,7 +30,7 @@
 }
 
 .memo-text {
-  font-size: 20px !important;  /* 強制優先 */
+  font-size: 20px !important;  /* 優先 */
   color: #222;
 }
 

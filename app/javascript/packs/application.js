@@ -16,6 +16,9 @@ import "../stylesheets/homes.css"
 import "../stylesheets/likes.css"
 import "../stylesheets/users.css"
 import "../stylesheets/workouts.css"
+import './calendar'; 
+import '@fullcalendar/core/main.css';
+import '@fullcalendar/daygrid/main.css';
 
 
 
