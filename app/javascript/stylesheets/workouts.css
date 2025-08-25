@@ -19,14 +19,19 @@
 
 .profile-img {
   border-radius: 50%;
-  width: 120px;
-  height: 120px;
+  width: 70px;
+  height: 70px;
   object-fit: cover;
 }
 
 .workout-content {
   display: flex;
   flex-direction: column;
+}
+
+.memo-text {
+  font-size: 20px !important;  /* 強制優先 */
+  color: #222;
 }
 
 .workout-actions {

@@ -3,7 +3,7 @@
     <strong><%= comment.user.name %>:</strong>
     <%= comment.content %>
     <% if comment.user == current_user %>
-      <%= link_to "Destroy", workout_comment_path(workout, comment), method: :delete, data: { confirm: "コメントを削除します" } %>
+      <%= link_to "削除", workout_comment_path(workout, comment), method: :delete, data: { confirm: "コメントを削除します" } %>
     <% end %>
   </p>
 <% end %>

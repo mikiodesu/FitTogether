@@ -2,6 +2,16 @@
   <h2 class="mb-4">編集</h2>
 
   <%= form_with model: @workout, local: true, class: "needs-validation" do |f| %>
+    <% if @workout.errors.any? %>
+      <div class="alert alert-danger">
+        <h5><%= pluralize(@workout.errors.count, "エラー") %>があります:</h5>
+        <ul>
+          <% @workout.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
     <!-- 日付 -->
     <div class="mb-3">

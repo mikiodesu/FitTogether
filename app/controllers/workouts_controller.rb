@@ -5,9 +5,13 @@ class WorkoutsController < ApplicationController
   end
 
   def create
-    @workout = current_user.workouts.new(workout_params)
-    @workout.save
-    redirect_to workouts_path
+    @workout = current_user.workouts.new(workout_params)  
+    if @workout.save
+      flash[:notice] = "投稿に成功しました。"
+      redirect_to workout_path(@workout.id)
+    else
+      render :new
+    end
   end
 
   def index
@@ -26,8 +30,12 @@ class WorkoutsController < ApplicationController
 
   def update
     @workout = Workout.find(params[:id])
-    @workout.update(workout_params)
-    redirect_to workouts_path
+    if @workout.update(workout_params)
+      flash[:notice] = "更新に成功しました。"
+      redirect_to workout_path(@workout.id)
+    else
+      render :edit
+    end
   end
 
   def destroy

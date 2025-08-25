@@ -1,0 +1,51 @@
+ja:
+  devise:
+    mailer:
+      confirmation_instructions:
+        subject: "確認用メールのご案内"
+      reset_password_instructions:
+        subject: "パスワード再設定のご案内"
+      unlock_instructions:
+        subject: "アカウントロック解除のご案内"
+      email_changed:
+        subject: "メールアドレスが変更されました"
+      password_change:
+        subject: "パスワードが変更されました"
+
+    sessions:
+      signed_in: "ログインに成功しました"
+      signed_out: "ログアウトしました"
+      already_signed_out: "既にログアウトしています"
+
+    registrations:
+      signed_up: "アカウントを登録しました"
+      destroyed: "アカウントを削除しました"
+      updated: "アカウント情報を更新しました"
+
+    passwords:
+      send_instructions: "パスワード再設定用メールを送信しました"
+      updated: "パスワードを変更しました"
+
+    failure:
+      already_authenticated: "既にログインしています"
+      inactive: "アカウントが有効化されていません"
+      invalid: "メールアドレスかパスワードが違います"
+      locked: "アカウントがロックされています"
+      last_attempt: "残り1回でアカウントがロックされます"
+      not_found_in_database: "メールアドレスかパスワードが違います"
+      timeout: "セッションの有効期限が切れました。再度ログインしてください"
+      unauthenticated: "ログインが必要です"
+      unconfirmed: "メールアドレスを確認してください"
+
+  errors:
+    messages:
+      not_saved:
+        one: "1件のエラーが発生しました:"
+        other: "%{count}件のエラーが発生しました:"
+      already_confirmed: "すでに確認済みです"
+      confirmation_period_expired: "確認期間が過ぎています"
+      expired: "有効期限が切れています"
+      not_found: "見つかりません"
+      not_locked: "ロックされていません"
+
+

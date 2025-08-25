@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :workouts, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
+
   # フォローする側
   has_many :relationships, foreign_key: :follower_id, dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
@@ -37,7 +38,7 @@ class User < ApplicationRecord
       where("name LIKE ?", "#{content}%")
     when "backward"
       where("name LIKE ?", "%#{content}")
-    else # partial
+    else 
       where("name LIKE ?", "%#{content}%")
     end
   end

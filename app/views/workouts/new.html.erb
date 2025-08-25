@@ -6,6 +6,16 @@
         <h1 class="mb-4 text-center">New Post</h1>
 
         <%= form_with model: @workout, local: true, class: "needs-validation" do |f| %>
+          <% if @workout.errors.any? %>
+            <div class="alert alert-danger">
+              <h5><%= pluralize(@workout.errors.count, "エラー") %>があります:</h5>
+              <ul>
+                <% @workout.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
 
           <div class="mb-3">
             <%= f.label :date, "トレーニング日", class: "form-label" %>

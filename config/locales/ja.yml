@@ -1,7 +1,8 @@
-# これは enum bodypart の翻訳メモです
 ja:
   activerecord:
     attributes:
+      workout:
+        memo: "一言メモ"
       workout_detail:
         bodypart:
           chest: "胸"
@@ -10,8 +11,32 @@ ja:
           legs: "脚"
           arms: "腕"
           abs: "腹筋"
+      user:
+        name: "名前"
+        email: "メールアドレス"
+        password: "パスワード"
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "を入力してください"
+            email:
+              blank: "を入力してください"
+            password:
+              blank: "を入力してください"
+              
+
+  errors:
+    messages:
+      not_saved: "登録にエラーが発生しました（%{count}件）"
+    
   date:
     order:
       - :year
       - :month
       - :day
+
+  
+
+   
