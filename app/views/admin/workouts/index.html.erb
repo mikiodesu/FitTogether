@@ -1,28 +1,31 @@
-<h1>投稿一覧</h1>
+<h1 class="text-center mb-4">投稿一覧</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>メモ</th>
-      <th>ユーザ</th>
-      <th>作成日</th>
-      <th>操作</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @workouts.each do |workout| %>
-      <tr>
-        <td><%= workout.id %></td>
-        <td><%= workout.memo %></td>
-        <td><%= workout.user.name %></td>
-        <td><%= workout.created_at.strftime("%Y/%m/%d") %></td>
-        <td>
-          <%= link_to "削除", admin_workout_path(workout), method: :delete, data: { confirm: "本当に削除しますか？" } %>
-          |
-          <%= link_to "コメント管理", admin_workout_comments_path(workout) %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="d-flex justify-content-center">
+  <div class="w-75">
+    <table class="table table-striped table-bordered text-center">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>メモ</th>
+          <th>ユーザ</th>
+          <th>作成日</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @workouts.each do |workout| %>
+          <tr>
+            <td><%= workout.id %></td>
+            <td><%= workout.memo %></td>
+            <td><%= workout.user.name %></td>
+            <td><%= workout.created_at.strftime("%Y/%m/%d") %></td>
+            <td>
+              <%= link_to "削除", admin_workout_path(workout), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger me-1" %>
+              <%= link_to "コメント管理", admin_workout_comments_path(workout), class: "btn btn-sm btn-secondary" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

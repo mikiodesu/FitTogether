@@ -1,26 +1,30 @@
-<h1>ユーザ一覧</h1>
+<h1 class="text-center mb-4">ユーザ一覧</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>名前</th>
-      <th>Email</th>
-      <th>登録日</th>
-      <th>操作</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.id %></td>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.created_at.strftime("%Y/%m/%d") %></td>
-        <td>
-          <%= link_to "削除", admin_user_path(user), method: :delete, data: { confirm: "本当に削除しますか？" } %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="d-flex justify-content-center">
+  <div class="w-75"> <!-- テーブルの幅を75%に設定 -->
+    <table class="table table-striped table-bordered text-center">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>名前</th>
+          <th>Email</th>
+          <th>登録日</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.created_at.strftime("%Y/%m/%d") %></td>
+            <td>
+              <%= link_to "削除", admin_user_path(user), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

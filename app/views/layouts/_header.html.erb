@@ -1,55 +1,63 @@
 <nav>
   <ul class="nav-list">
-    <% if user_signed_in? %>
+    <% if admin_signed_in? %>
       <li>
-        <%= link_to root_path, class: "logo-link" do %>
-          <%= image_tag "logo.png", alt: "FitTogetherロゴ", width: 150, height: 150  %>
+        <%= link_to admin_root_path do %>
+          Dashboard<br>
+          <span class="sub-text">ダッシュボード</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to destroy_admin_session_path, method: :delete do %>
+          Log out<br>
+          <span class="sub-text">ログアウト</span>
         <% end %>
       </li>
 
+    <% elsif user_signed_in? %>
+      <li>
+        <%= link_to root_path, class: "logo-link" do %>
+          <%= image_tag "logo.png", alt: "FitTogetherロゴ", width: 150, height: 150 %>
+        <% end %>
+      </li>
       <li><%= link_to '+', new_workout_path, class: "new-workout-btn" %></li>
-
       <li>
         <%= link_to workouts_path do %>
           Timeline<br>
           <span class="sub-text">タイムライン</span>
         <% end %>
       </li>
-
       <li>
         <%= link_to analysis_workouts_path(current_user) do %>
           Analysis<br>
           <span class="sub-text">分析</span>
         <% end %>
       </li>
-      
       <li>
         <%= link_to users_path do %>
           Members<br>
           <span class="sub-text">会員一覧</span>
         <% end %>
       </li>
-     
       <li>
         <%= link_to user_path(current_user.id) do %>
           Mypage<br>
           <span class="sub-text">マイページ</span>
         <% end %>
       </li>
-      
       <li>
         <%= link_to destroy_user_session_path, method: :delete do %>
           Log out<br>
           <span class="sub-text">ログアウト</span>
         <% end %>
       </li>
+
     <% else %>
       <li>
         <%= link_to root_path, class: "logo-link" do %>
-          <%= image_tag "logo.png", alt: "FitTogetherロゴ", width: 150, height: 150  %>
+          <%= image_tag "logo.png", alt: "FitTogetherロゴ", width: 150, height: 150 %>
         <% end %>
       </li>
-
       <li>
         <% if current_page?(root_path) %>
           <a href="#feature">
@@ -63,21 +71,18 @@
           <% end %>
         <% end %>
       </li>
-
       <li>
         <%= link_to new_user_registration_path do %>
           Sign up for membership<br>
           <span class="sub-text">メンバー登録</span>
         <% end %>
       </li>
-        
       <li>
         <%= link_to new_user_session_path do %>
           Log in<br>
           <span class="sub-text">ログイン</span>
         <% end %>
       </li>
-      
     <% end %>
   </ul>
 </nav>

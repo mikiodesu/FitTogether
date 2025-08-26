@@ -1,18 +1,24 @@
-<h1>管理者ダッシュボード</h1>
+<h1 class="text-center mb-4">管理者ダッシュボード</h1>
 
-<nav>
-  <ul>
-    <li><%= link_to "ユーザ管理", admin_users_path %></li>
-    <li><%= link_to "投稿管理", admin_workouts_path %></li>
-    <li>コメント管理
-      <ul>
-        <% @workouts.each do |workout| %>
-          <li>
-            <%= link_to "#{workout.date} のコメント管理", admin_workout_comments_path(workout) %>
-          </li>
-        <% end %>
-      </ul>
-    </li>
-    <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
-  </ul>
-</nav>
+<div class="d-flex justify-content-center">
+  <div class="w-50">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <%= link_to "ユーザ管理", admin_users_path, class: "text-decoration-none" %>
+      </li>
+      <li class="list-group-item">
+        <%= link_to "投稿管理", admin_workouts_path, class: "text-decoration-none" %>
+      </li>
+      <li class="list-group-item">
+        コメント管理
+        <ul class="list-group mt-2">
+          <% @workouts.each do |workout| %>
+            <li class="list-group-item">
+              <%= link_to "投稿ID：#{workout.id} のコメント", admin_workout_comments_path(workout), class: "text-decoration-none" %>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

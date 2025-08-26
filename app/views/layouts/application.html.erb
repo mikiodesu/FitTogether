@@ -12,14 +12,13 @@
   </head>
 
   <body class="<%= 'top-page' if current_page?(root_path) %>">
-    <% unless current_admin %>
-      <%= render 'layouts/header' %>
-    <% end %>
+    <%= render 'layouts/header' %>
+
     <div class="main-content">
       <%= yield %>
     </div>
-    <% unless current_admin %>
-      <%= render 'layouts/footer' %>
-    <% end %>
+    
+    <%= render 'layouts/footer' %>
+  
   </body>
 </html>
