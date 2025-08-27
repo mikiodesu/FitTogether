@@ -1,4 +1,6 @@
 class WorkoutsController < ApplicationController
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  
   def new
     @workout = Workout.new(date: Date.today)
     @workout.workout_details.build # 最初は1つだけ,空フォームを用意追加ボタンでJavaScriptがfields_forのhtmlを複製して挿入
@@ -71,6 +73,11 @@ class WorkoutsController < ApplicationController
       :date, :memo, :is_public,
       workout_details_attributes: [:id, :exercise_name, :bodypart,:weight, :reps, :sets, :_destroy]
     )
+  end
+
+  def correct_user
+    @workout = Workout.find(params[:id])
+    redirect_to workouts_path unless @workout.user == current_user
   end
 
 
