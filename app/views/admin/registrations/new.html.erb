@@ -1,20 +1,26 @@
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <div>
-    <%= f.label :email %>
-    <%= f.email_field :email %>
+<h1 class="text-center mb-4">サインアップ</h1>
+
+<div class="d-flex justify-content-center">
+  <div class="w-50"> <!-- フォーム幅を50%に設定 -->
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "needs-validation" }) do |f| %>
+      <div class="mb-3">
+        <%= f.label :email, class: "form-label" %>
+        <%= f.email_field :email, class: "form-control", required: true %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :password, class: "form-label" %>
+        <%= f.password_field :password, class: "form-control", required: true %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :password_confirmation, class: "form-label" %>
+        <%= f.password_field :password_confirmation, class: "form-control", required: true %>
+      </div>
+
+      <div class="mb-3 text-center">
+        <%= f.submit "サインアップ", class: "btn btn-primary" %>
+      </div>
+    <% end %>
   </div>
-  
-  <div>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-  
-  <div>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  
-  <div>
-    <%= f.submit "サインアップ" %>
-  </div>
-<% end %>
+</div>

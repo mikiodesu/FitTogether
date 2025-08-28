@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :workouts, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
+
   # フォローする側
   has_many :relationships, foreign_key: :follower_id, dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
@@ -23,7 +24,7 @@ class User < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    profile_image.variant(resize_to_limit: [width, height]).processed
+    profile_image.variant(resize_to_fill: [width, height]).processed
   end
 
    # 検索メソッド
@@ -37,7 +38,7 @@ class User < ApplicationRecord
       where("name LIKE ?", "#{content}%")
     when "backward"
       where("name LIKE ?", "%#{content}")
-    else # partial
+    else 
       where("name LIKE ?", "%#{content}%")
     end
   end

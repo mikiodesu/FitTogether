@@ -14,27 +14,33 @@
  *= require_self
  */
 
+ /* 上の空白消す */
+
+ html, body {
+  height: 100%;
+}
+
+ body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
  html {
   scroll-behavior: smooth;
 }
 
 .main-content {
-  padding-top: 200px; /* ヘッダーの高さ分 */
+  padding-top: 180px; /* ヘッダーの高さ分+30px */
+  flex: 1; /* メインコンテンツが余白を埋める */
 }
 
- .top-background {
-  background-image: url('gym.png'); /* 背景画像 */
-  background-size: cover;      /* 画面全体に拡大 */
-  background-position: center; /* 中央配置 */
-  height: 800px;               /* 高さ調整 */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: black;                
-  text-align: center;
-  
+body.top-page .main-content {
+  padding-top: 150px; /* ヘッダー分の空白を打ち消す */
 }
+
+
 
 
 

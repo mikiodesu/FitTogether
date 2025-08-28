@@ -1,24 +1,42 @@
-<h1>ユーザー一覧</h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
 
-<%= render 'form' %>
+      <h1 class="mb-4 text-center">会員一覧</h1>
 
-<% if @users.present? %>
-  <ul>
-    <% @users.each do |user| %>
-      <li>
-        <%= image_tag user.get_profile_image(50, 50), class: "profile-img" %>
-        <%= link_to user.name, user_path(user) %>
+      <%= render 'form' %>
 
-        <% unless current_user == user %>
-          <% if current_user.following?(user) %>
-            <%= button_to "フォロー解除", user_relationships_path(user), method: :delete %>
-          <% else %>
-            <%= button_to "フォローする", user_relationships_path(user), method: :post %>
+      <% if @users.present? %>
+        <div class="users-list">
+          <% @users.each do |user| %>
+            <div class="card mb-3 shadow-sm">
+              <div class="card-body d-flex align-items-center justify-content-between user-item">
+
+                <!-- 左：プロフィール画像＋名前 -->
+                <div class="d-flex align-items-center gap-3">
+                  <%= image_tag user.get_profile_image(50, 50), class: "rounded-circle border" %>
+                  <%= link_to user.name, user_path(user), class: "fw-bold text-decoration-none" %>
+                </div>
+
+                <!-- 右：フォローボタン -->
+                <% unless current_user == user %>
+                  <div>
+                    <% if current_user.following?(user) %>
+                      <%= button_to "フォロー解除", user_relationships_path(user), method: :delete, class: "btn btn-outline-danger btn-sm" %>
+                    <% else %>
+                      <%= button_to "フォローする", user_relationships_path(user), method: :post, class: "btn btn-primary btn-sm" %>
+                    <% end %>
+                  </div>
+                <% end %>
+
+              </div>
+            </div>
           <% end %>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>該当するユーザーはいません</p>
-<% end %>
+        </div>
+      <% else %>
+        <p class="text-center text-muted">該当するユーザーはいません</p>
+      <% end %>
+
+    </div>
+  </div>
+</div>

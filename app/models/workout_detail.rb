@@ -8,4 +8,11 @@ class WorkoutDetail < ApplicationRecord
     arms: 4,
     abs: 5
   }
+
+  validates :bodypart, presence: { message: "は必ず入力してください" }
+  validates :exercise_name, presence: { message: "は必ず入力してください" }
+  validates :weight, presence: { message: "は必ず入力してください" }
+  validates :reps, presence: { message: "は必ず入力してください" }
+  validates :sets, presence: { message: "は必ず入力してください" }
+
 end

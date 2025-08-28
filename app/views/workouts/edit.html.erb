@@ -1,36 +1,24 @@
+<div class="container" style="max-width: 600px;">
+  <h2 class="mb-4">編集</h2>
 
-<h2>編集</h2>
-<%= form_with model: @workout, local: true do |f| %>
+  <%= form_with model: @workout, local: true, class: "needs-validation" do |f| %>
 
-  <h4>日付</h4>
-  <%= f.label :date, "トレーニング日" %>
-  <%= f.date_field :date %>
-
-  <h4>一言メモ</h4>
-  <%= f.text_area :memo, id: "inputMemo", placeholder: "一言メモ", rows: 5 %>
-
-  <h4>公開非公開設定</h4>
-  <%= f.select :is_public, [["公開", true], ["非公開", false]] %>
-
-  <h3>トレーニング詳細</h3>
-  <%= f.fields_for :workout_details do |detail_form| %>
-    <div>
-      <%= detail_form.label :exercise_name, "種目" %>
-      <%= detail_form.text_field :exercise_name %>
-
-      <%= detail_form.label :bodypart, "部位" %>
-      <%= detail_form.select :bodypart, WorkoutDetail.bodyparts.keys.map { |k| [I18n.t("activerecord.attributes.workout_detail.bodypart.#{k}"), k] } %>
-
-      <%= detail_form.label :weight, "重量(kg)" %>
-      <%= detail_form.number_field :weight %>
-
-      <%= detail_form.label :reps, "回数" %>
-      <%= detail_form.number_field :reps %>
-
-      <%= detail_form.label :sets, "セット数" %>
-      <%= detail_form.number_field :sets %>
+    <!-- 日付・メモ・公開設定 -->
+    <div class="mb-3">
+      <%= f.label :date, "トレーニング日", class: "form-label" %>
+      <%= f.date_field :date, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :memo, "一言メモ", class: "form-label" %>
+      <%= f.text_area :memo, rows: 5, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :is_public, "公開非公開設定", class: "form-label" %>
+      <%= f.select :is_public, [["公開", true], ["非公開", false]], {}, class: "form-select" %>
+    </div>
+    <!-- 送信 -->
+    <div class="mb-3">
+      <%= f.submit "変更を保存", class: "btn btn-success" %>
     </div>
   <% end %>
-
-  <%= f.submit "変更を保存" %>
-<% end %>
+</div>

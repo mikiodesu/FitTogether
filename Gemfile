@@ -74,3 +74,5 @@ end
 
  #非同期通信
 gem 'jquery-rails'
+
+gem 'kaminari','~> 1.2.1'

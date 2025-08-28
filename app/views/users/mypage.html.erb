@@ -1,23 +1,38 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
 
-<h2>アカウント情報編集</h2>
+      <div class="card shadow-sm p-4">
+        <h2 class="mb-4 text-center">アカウント設定</h2>
 
-<%= form_with model: @user, url: update_credentials_users_path, method: :patch, local: true do |f| %>
-  <div>
-    <%= f.label :email, "メールアドレス" %><br>
-    <%= f.email_field :email, required: true %>
+        <%= form_with model: @user, url: update_credentials_users_path, method: :patch, local: true, html: { class: "needs-validation" } do |f| %>
+          <div class="mb-3">
+            <%= f.label :email, "メールアドレス", class: "form-label" %>
+            <%= f.email_field :email, class: "form-control", required: true %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :password, "新しいパスワード（変更しない場合は空欄でOK）", class: "form-label" %>
+            <%= f.password_field :password, class: "form-control", autocomplete: "new-password" %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :password_confirmation, "パスワード確認", class: "form-label" %>
+            <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "new-password" %>
+          </div>
+
+          <div class="text-center">
+            <%= f.submit "更新", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+
+        <hr>
+
+        <div class="text-center mt-3">
+          <%= link_to "退会する", user_path(current_user), method: :delete, data: { confirm: "本当に退会しますか？" }, class: "btn btn-outline-danger" %>
+        </div>
+
+      </div>
+    </div>
   </div>
-
-  <div>
-    <%= f.label :password, "新しいパスワード（変更しない場合は空欄でOK）" %><br>
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div>
-    <%= f.label :password_confirmation, "パスワード確認" %><br>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <%= f.submit "更新" %>
-<% end %>
-
-<%= link_to "退会する", user_path(current_user), method: :delete, data: { confirm: "本当に退会しますか？" } %>
+</div>

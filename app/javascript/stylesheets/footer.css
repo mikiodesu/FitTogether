@@ -1,0 +1,12 @@
+.footer {
+  text-align: center;
+  background-color: black;
+  color: white;
+  height: 40px;    
+  margin-top: 50px;   
+}
+
+.footer p {
+  line-height: 40px;  /* 高さと同じ値にし縦中央に */
+}
+ 

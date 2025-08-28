@@ -1,17 +1,63 @@
-# これは enum bodypart の翻訳メモです
 ja:
   activerecord:
+    models:
+      workout_detail: "トレーニング詳細"
     attributes:
-      workout_detail:
-        bodypart:
+      workout:
+        memo: "一言メモ"
+      workout_detail: 
+        bodypart: "部位"          # フォームラベル・エラー用
+        exercise_name: "種目"
+        weight: "重量"
+        reps: "回数"
+        sets: "セット数"
+        bodypart_options:          # select 用
           chest: "胸"
           back: "背中"
           shoulders: "肩"
           legs: "脚"
           arms: "腕"
           abs: "腹筋"
+      user:
+        name: "名前"
+        email: "メールアドレス"
+        password: "パスワード"
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "を入力してください"
+            email:
+              blank: "を入力してください"
+              taken: "は既に使われています"
+            password:
+              blank: "を入力してください"
+              too_short: "は%{count}文字以上で入力してください"
+        workout_detail:
+          attributes:
+            exercise_name:
+              blank: "は必ず入力してください"
+            weight:
+              blank: "は必ず入力してください"
+            reps:
+              blank: "は必ず入力してください"
+            sets:
+              blank: "は必ず入力してください"
+            bodypart:
+              blank: "を選択してください"
+              
+
+  errors:
+    messages:
+      not_saved: "登録にエラーが発生しました（%{count}件）"
+    
   date:
     order:
       - :year
       - :month
       - :day
+
+  
+
+   

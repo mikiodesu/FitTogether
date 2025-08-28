@@ -1,23 +1,54 @@
 <div class="top-background">
-  <h1>FitTogether</h1>
-  <h4>筋トレをするすべてのひとへ</h4>
-  <p>あなたの努力を見える化しませんか？</p>
+  <h3>~For All Trainers~</h3>
+  
+  <h2>[Fit Together]</h2>
+  
+  <div class="catch-copy">
+    <h2>記録</h2>
+    <h2>×</h2>
+    <h2>シェア</h2>
+  </div>
+  
+  <p>筋トレをより楽しく習慣づけることのできる<br>SNS型サービスです</p>
 </div>
 
-<div id="concept">
-  <h2>Concept of FitTogether</h2>
-    <div>
-      <h3>筋トレを記録する</h3>
-      <p>種目名、重量、回数、セット数などの項目に細分化して記録できます</p>
+
+<div id="feature" class="container my-5">
+  <h3 class="text-center mb-5">Features</h3>
+  <div class="row justify-content-center">
+
+    <!-- 記録 -->
+    <div class="col-md-4 mb-4 mt-4">
+      <div class="card h-100 shadow-sm d-flex flex-column align-items-center p-3">
+        <%= image_tag "post.png", class: "mb-3", alt: "記録", size: "300x300" %>
+        <div class="card-body text-start">
+          <h5 class="card-title">✅トレーニング記録</h5>
+          <p class="card-text">日々のトレーニングを、簡単に記録</p>
+        </div>
+      </div>
     </div>
 
-    <div>
-      <h3>筋トレ内容をグラフで確認</h3>
-      <p>集計された記録はグラフで表示され直観的に筋トレ記録を管理しやすくなります</p>
+    <!-- シェア -->
+    <div class="col-md-4 mb-4 mt-4">
+      <div class="card h-100 shadow-sm d-flex flex-column align-items-center p-3">
+        <%= image_tag "timeline.png", class: "mb-3", alt: "シェア", size: "300x300" %>
+        <div class="card-body text-start">
+          <h5 class="card-title">✅トレーニングをシェア</h5>
+          <p class="card-text">トレーニングをタイムラインでシェアしてモチベーションアップ</p>
+        </div>
+      </div>
     </div>
 
-    <div>
-      <h3>筋トレをシェア</h3>
-      <p>記録した筋トレはタイムラインに共有することもできます</p>
+    <!-- 分析 -->
+    <div class="col-md-4 mb-4 mt-4">
+      <div class="card h-100 shadow-sm d-flex flex-column align-items-center p-3">
+        <%= image_tag "analysis.png", class: "mb-3", alt: "分析", size: "300x300" %>
+        <div class="card-body text-start">
+          <h5 class="card-title">✅トレーニング内容を分析</h5>
+          <p class="card-text">部位別チャートでバランスよくトレーニング</p>
+        </div>
+      </div>
     </div>
+
+  </div>
 </div>

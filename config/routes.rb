@@ -21,6 +21,12 @@ Rails.application.routes.draw do
  
   resources :users, only: [:index, :show, :edit, :update, :destroy] do
     resource :relationships, only: [:create, :destroy]
+
+    member do   # ← ユーザごとのページだから member
+      get :followings   # /users/:id/followings
+      get :followers    # /users/:id/followers
+    end
+  
     collection do  #セッション情報でわかるためmemberでない(ID不要)
       get 'mypage'
       patch 'update_credentials'
@@ -31,6 +37,9 @@ Rails.application.routes.draw do
   resources :workouts do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
+    collection do
+      get 'analysis'
+    end
   end
  
 end

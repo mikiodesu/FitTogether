@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  # current_user以外編集できない
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
     if params[:content].present?
@@ -62,6 +64,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def followings
+    @user = User.find(params[:id])
+    @users = @user.followings
+  end
+
+  def followers
+    @user = User.find(params[:id])
+    @users = @user.followers
+  end
+
   private
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction)
@@ -69,6 +81,11 @@ class UsersController < ApplicationController
 
   def account_params
     params.require(:user).permit(:email, :password, :password_confirmation)
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to users_path unless @user == current_user
   end
 
 end
