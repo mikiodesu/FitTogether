@@ -2,7 +2,7 @@
 
 ## サイト概要
 ### サイトテーマ
-筋トレ内容を記録・共有することで筋トレの質を高めることを目標としたSNS
+筋トレ内容を記録・共有することで筋トレのモチベーションを高めることを目標としたSNS
 
 ​
 ### テーマを選んだ理由
@@ -13,22 +13,24 @@
 ​
 ### ターゲットユーザ
 ・筋トレを始めたばかりで、記録の習慣をつけたい人  
-・筋トレを継続しているが、内容がマンネリ化してきたと感じている人 
+・筋トレを継続しているが、モチベーションの維持に悩む人 
 ​
 ### 主な利用シーン
-・自分の筋トレ内容を記録・可視化したいとき  
-・他人のトレーニング内容を参考にしたいとき  
-・自分の頑張りを他の人と共有したいとき
+・自分の筋トレ内容を記録・分析したいとき  
+・他者とトレーニング内容をシェアしたいとき  
 ​
 ## 設計書
-後ほど作成予定
+・テーブル定義書：https://docs.google.com/spreadsheets/d/1Pt6Af0f3ktRwwiHlYVdjNnh7tXXYsKbN7_VeIPIjZaI/edit?usp=sharing
+・詳細設計書：https://docs.google.com/spreadsheets/d/1X6wUR_yotRG5HJjcZF_24QAeGWOV0jrms_Ma4dMdmUk/edit?usp=sharing
+・ER図：https://drive.google.com/file/d/11L9tds9p4GX4Y7mpE5niRg-jP28hMD1F/view?usp=sharing
 ​
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
-- IDE：Cloud9
+- IDE：VS Code
 ​
 ## 使用素材
-・フリーイラスト素材として以下を使用（詳細は後日）
+・ロゴ画像：AI生成（ChatGPTの画像生成機能を使用）
+
