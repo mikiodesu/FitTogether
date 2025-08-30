@@ -12,17 +12,19 @@
 本アプリは、「記録 × 交流」によって筋トレの継続をサポートするSNS型のサービスです。
 ​
 ### ターゲットユーザ
-・筋トレを始めたばかりで、記録の習慣をつけたい人  
-・筋トレを継続しているが、モチベーションの維持に悩む人 
+-筋トレを始めたばかりで、記録の習慣をつけたい人  
+-筋トレを継続しているが、モチベーションの維持に悩む人 
 ​
 ### 主な利用シーン
-・自分の筋トレ内容を記録・分析したいとき  
-・他者とトレーニング内容をシェアしたいとき  
+-自分の筋トレ内容を記録・分析したいとき  
+-他者とトレーニング内容をシェアしたいとき  
 ​
 ## 設計書
-・テーブル定義書：https://docs.google.com/spreadsheets/d/1Pt6Af0f3ktRwwiHlYVdjNnh7tXXYsKbN7_VeIPIjZaI/edit?usp=sharing
-・詳細設計書：https://docs.google.com/spreadsheets/d/1X6wUR_yotRG5HJjcZF_24QAeGWOV0jrms_Ma4dMdmUk/edit?usp=sharing
-・ER図：https://drive.google.com/file/d/11L9tds9p4GX4Y7mpE5niRg-jP28hMD1F/view?usp=sharing
+-テーブル定義書：https://docs.google.com/spreadsheets/d/1Pt6Af0f3ktRwwiHlYVdjNnh7tXXYsKbN7_VeIPIjZaI/edit?usp=sharing
+
+-詳細設計書：https://docs.google.com/spreadsheets/d/1X6wUR_yotRG5HJjcZF_24QAeGWOV0jrms_Ma4dMdmUk/edit?usp=sharing
+
+-ER図：https://drive.google.com/file/d/11L9tds9p4GX4Y7mpE5niRg-jP28hMD1F/view?usp=sharing
 ​
 ## 開発環境
 - OS：Linux(CentOS)
@@ -32,5 +34,5 @@
 - IDE：VS Code
 ​
 ## 使用素材
-・ロゴ画像：AI生成（ChatGPTの画像生成機能を使用）
+-ロゴ画像：AI生成（ChatGPTの画像生成機能を使用）
 
