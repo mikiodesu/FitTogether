@@ -20,5 +20,11 @@ module FitTogether
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # タイムゾーンを東京に設定
+    config.time_zone = 'Tokyo'
+
+    # DB に保存する時間
+    config.active_record.default_timezone = :local
   end
 end
