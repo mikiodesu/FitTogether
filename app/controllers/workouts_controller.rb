@@ -26,6 +26,10 @@ class WorkoutsController < ApplicationController
   def show
     @workout = Workout.find(params[:id])
     @comment = Comment.new
+     # 非公開投稿は他人がアクセスできない
+     if !@workout.is_public && @workout.user != current_user
+      redirect_to workouts_path, alert: "この投稿は非公開です"
+    end
   end
 
   def edit

@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <p><strong>一言メモ：</strong> <%= @workout.memo %></p>
+    <p><strong>一言メモ：</strong><%= simple_format(@workout.memo, sanitize: true) %></p>
 
     <% if @workout.user == current_user %>
       <div class="mb-3">
@@ -33,7 +33,7 @@
     </div>
 
     <!-- コメント部分 -->
-    <%= render "comments/index", workout: @workout %>
     <%= render "comments/form", workout: @workout, comment: @comment %>
+    <%= render "comments/index", workout: @workout %>
   </div>
 </div>
