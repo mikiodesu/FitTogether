@@ -9,7 +9,6 @@ class WorkoutsController < ApplicationController
   def create
     @workout = current_user.workouts.new(workout_params)  
     if @workout.save
-      flash[:notice] = "投稿に成功しました。"
       redirect_to workout_path(@workout.id)
     else
       @workout.workout_details.build 

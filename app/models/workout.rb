@@ -5,7 +5,7 @@ class Workout < ApplicationRecord
   has_many :comments, dependent: :destroy
   accepts_nested_attributes_for :workout_details, allow_destroy: true
 
-  validates :memo, presence: { message: "は必ず入力してください" }
+  validates :memo, presence: true
 
    
   def liked_by?(user)

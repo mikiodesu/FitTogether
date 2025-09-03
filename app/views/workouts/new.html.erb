@@ -5,6 +5,17 @@
       <div class="card shadow-sm p-4">
         <h1 class="mb-4 text-center">New Post</h1>
 
+          <!-- Workout（親モデル）のエラーメッセージ -->
+          <% if @workout.errors[:memo].any? %>
+            <div class="alert alert-danger">
+              <ul class="mb-0">
+                <% @workout.errors[:memo].each do |msg| %>
+                  <li>一言メモ <%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
         <%= form_with model: @workout, local: true, class: "needs-validation" do |f| %>
 
 
@@ -24,6 +35,21 @@
           </div>
 
           <h3 class="mt-4 mb-3 text-center">トレーニング詳細</h3>
+
+          <!-- WorkoutDetail のエラーメッセージ -->
+            <% @workout.workout_details.each_with_index do |detail, i| %>
+              <% if detail.errors.any? %>
+                <div class="alert alert-danger">
+                  <strong>トレーニング詳細<%= i + 1 %> のエラー:</strong>
+                  <ul class="mb-0">
+                    <% detail.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+            <% end %>
+
 
           <div id="workout_details" class="mb-3">
             <%= f.fields_for :workout_details do |detail_form| %>

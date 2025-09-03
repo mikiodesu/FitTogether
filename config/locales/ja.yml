@@ -34,6 +34,10 @@ ja:
             password:
               blank: "を入力してください"
               too_short: "は%{count}文字以上で入力してください"
+        workout:
+          attributes:
+            memo:
+              blank: "は必ず入力してください"
         workout_detail:
           attributes:
             exercise_name:
@@ -46,6 +50,7 @@ ja:
               blank: "は必ず入力してください"
             bodypart:
               blank: "を選択してください"
+      
               
 
   errors:
